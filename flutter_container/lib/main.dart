@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
                   height: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    border: Border.all(width: 6.0,color: Colors.black),
-                    color: Colors.purpleAccent
+                    border: Border.all(width: 6.0, color: Colors.black),
+                    color: Colors.purpleAccent,
                     //color: Colors.purpleAccent,
                   ),
                   child: Center(
@@ -97,7 +97,10 @@ class MyApp extends StatelessWidget {
                 ),
               ],
             ),
-                Image.network("https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1356&h=668&fit=crop", width: 150)
+            Image.network(
+              "https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1356&h=668&fit=crop",
+              width: 150,
+            ),
           ],
         ),
       ),
