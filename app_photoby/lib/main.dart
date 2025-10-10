@@ -41,10 +41,7 @@ class _MyWidgetState extends State<Photography> {
                 ClipRRect(
                   // ClipRRect ->
                   borderRadius: BorderRadius.circular(500),
-                  child: Image.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-                    width: 250,
-                  ),
+                  child: Image.asset('assets/images/camera.jpeg', width: 250),
                 ),
                 SizedBox(height: 40),
                 Row(
