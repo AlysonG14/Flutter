@@ -21,7 +21,7 @@ class _MyWidgetState extends State<homoPage> {
         body: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(500),
@@ -29,41 +29,49 @@ class _MyWidgetState extends State<homoPage> {
                     'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', width: 100,
                   ),
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                      child: Image.network(
-                        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg", width: 100,
-                      ),
-                    ),
-                  ],
+                Text(
+                  "Photoby",
+                  style: TextStyle(color: Colors.grey, fontSize: 50 ),
                 ),
+                SizedBox(
+                  width: 500,
+                )
               ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                      child: Image.network(
-                        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg", width: 100,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                )
           ],
-        ),
-      ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(20),
+                      child: Image.network(
+                        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg", width: 100,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(20),
+                      child: Image.network(
+                        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg", width: 100,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ];
+      );
     );
   }
 }
