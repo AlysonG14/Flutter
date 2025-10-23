@@ -101,7 +101,7 @@ class _MyWidgetState extends State<Photography> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => homoPage()),
+                      MaterialPageRoute(builder: (context) => HomePage()),
                     );
                   },
                   child: Text(

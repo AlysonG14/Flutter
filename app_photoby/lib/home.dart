@@ -1,77 +1,23 @@
 import 'package:flutter/material.dart';
 
-
-class homoPage extends StatefulWidget {
-  const homoPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<homoPage> createState() => _MyWidgetState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyWidgetState extends State<homoPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xfD9D9D9)),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Photoby', style: TextStyle(fontSize: 30, color: Colors.white)),
+          title: Text("Photoby"),
         ),
-        body: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(500),
-                  child: Image.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg', width: 100,
-                  ),
-                ),
-                Text(
-                  "Photoby",
-                  style: TextStyle(color: Colors.grey, fontSize: 50 ),
-                ),
-                SizedBox(
-                  width: 500,
-                )
-              ],
-                )
-          ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                      child: Image.network(
-                        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg", width: 100,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(20),
-                      child: Image.network(
-                        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg", width: 100,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ];
-      );
+      ),
     );
   }
 }
