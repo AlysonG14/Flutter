@@ -98,6 +98,10 @@ class _MyWidgetState extends State<Photography> {
               children: [
                 SizedBox(height: 35),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xf0D9D9D9),
+                    textStyle: TextStyle(color: Color(0xf0000000))
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
