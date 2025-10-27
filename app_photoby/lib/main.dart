@@ -40,8 +40,7 @@ class _MyWidgetState extends State<Photography> {
               children: [
                 ClipRRect(
                   // ClipRRect ->
-                  borderRadius: BorderRadius.circular(500),
-                  child: Image.asset('assets/images/camera.jpeg', width: 250),
+                  child: Image.network('https://cdn.pixabay.com/photo/2012/04/11/17/31/camera-29061_1280.png', width: 250),
                 ),
                 SizedBox(height: 40),
                 Row(
