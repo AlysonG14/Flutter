@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"bancoapp-edc28","appId":"1:75256060551:android:de3a5cb008a4944532f622","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"bancoapp-edc28","configurations":{"android":"1:75256060551:android:de3a5cb008a4944532f622","web":"1:75256060551:web:05838c837eb9a2f932f622"}}}}}}

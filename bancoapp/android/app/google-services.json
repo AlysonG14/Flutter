@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "75256060551",
+    "project_id": "bancoapp-edc28",
+    "storage_bucket": "bancoapp-edc28.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75256060551:android:de3a5cb008a4944532f622",
+        "android_client_info": {
+          "package_name": "com.bancoapp.bancoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPsSPH76bcznhvyHRkZg5s38RjFrf5Gw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
