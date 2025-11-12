@@ -35,8 +35,8 @@ class TelaGet extends StatefulWidget {
 class _TelaGetState extends State<TelaGet> {
   // faça a sua logica aqui BORRACHUDO
     String? variavel;
-    double? temperatura; // variavel que irá receber o valor do banco
-    double? umidade;
+    String? temperatura; // variavel que irá receber o valor do banco
+    String? umidade;
 
     @override
     void initState() { // funcao que reinicia ou vola ao estado inicial
@@ -72,7 +72,7 @@ class _TelaGetState extends State<TelaGet> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-      Text("${temperatura!.toDouble()}", style: TextStyle(color: Colors.lightBlue), ),
+      Text("${temperatura!}", style: TextStyle(color: Colors.lightBlue), ),
       ElevatedButton(onPressed: (){
         Navigator.push(context, MaterialPageRoute(builder: (context)=> PostPage()));
       }, child: Text("Página de Post"))
