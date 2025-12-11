@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
                       BookCard(
                         image: "assets/book3.png",
                         title: "The Lost World",
-                      ),f
+                      ),
                       BookCard(
                         image: "assets/book4.png",
                         title: "The War of the Worlds",
