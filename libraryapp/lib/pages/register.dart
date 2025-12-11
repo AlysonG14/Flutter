@@ -1,7 +1,7 @@
 import 'package:app_photoby/main.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
-import 'main.dart';
+import 'home_page.dart';
+import '../main.dart';
 
 void main() {
   runApp(const MyApp());
