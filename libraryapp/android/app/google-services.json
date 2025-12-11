@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640306016160",
+    "project_id": "libraryapp-b7a78",
+    "storage_bucket": "libraryapp-b7a78.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640306016160:android:d49156e794c434ecb27ec5",
+        "android_client_info": {
+          "package_name": "com.meuapp.app_photoby"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBia8Aaozw-PvYyvtbpQ05k1vcyaIohFGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

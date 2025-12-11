@@ -1,9 +1,14 @@
-import 'package:app_photoby/main.dart';
 import 'package:flutter/material.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'home.dart';
 import 'register.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ); // inicializa o firebase
   runApp(const MyApp());
 }
 
@@ -12,21 +17,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const RegisterUser(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: const Login());
   }
 }
 
-class RegisterUser extends StatefulWidget {
-  const RegisterUser({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<RegisterUser> createState() => _RegisterUserState();
+  State<Login> createState() => _LoginState();
 }
 
-class _RegisterUserState extends State<RegisterUser> {
+class _LoginState extends State<Login> {
   bool keepSignedIn = false;
 
   @override
@@ -58,30 +60,32 @@ class _RegisterUserState extends State<RegisterUser> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Login()),
-                      );
-                    },
-                    child: const Opacity(
-                      opacity: 0.5,
-                      child: Text(
-                        "SIGN IN",
-                        style: TextStyle(fontSize: 28, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 50),
                   Text(
-                    "SIGN UP",
+                    "SIGN IN",
                     style: TextStyle(
                       fontSize: 28,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline,
                       decorationColor: Color(0xff0396D5),
+                    ),
+                  ),
+                  const SizedBox(width: 50),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterUser(),
+                        ),
+                      );
+                    },
+                    child: const Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "SIGN UP",
+                        style: TextStyle(fontSize: 28, color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
@@ -106,31 +110,13 @@ class _RegisterUserState extends State<RegisterUser> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // First Name
+                    // Username
                     const Text(
-                      "First Name",
+                      "Username",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     const SizedBox(height: 10),
-                    _buildInputField("First Name"),
-
-                    const SizedBox(height: 30),
-
-                    const Text(
-                      "Last Name",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    const SizedBox(height: 10),
-                    _buildInputField("Last Name"),
-
-                    const SizedBox(height: 30),
-
-                    const Text(
-                      "Email",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    const SizedBox(height: 10),
-                    _buildInputField("Email"),
+                    _buildInputField("Name"),
 
                     const SizedBox(height: 30),
 
@@ -152,7 +138,7 @@ class _RegisterUserState extends State<RegisterUser> {
                       },
                       controlAffinity: ListTileControlAffinity.leading,
                       title: const Text(
-                        "Accept Terms & Conditions",
+                        "Keep me Signed In",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -172,12 +158,12 @@ class _RegisterUserState extends State<RegisterUser> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Login(),
+                              builder: (context) => const HomePage(),
                             ),
                           );
                         },
                         child: const Text(
-                          "SIGN UP",
+                          "SIGN IN",
                           style: TextStyle(fontSize: 22, color: Colors.white),
                         ),
                       ),
@@ -185,7 +171,18 @@ class _RegisterUserState extends State<RegisterUser> {
                   ],
                 ),
               ),
-              const SizedBox(height: 50),
+
+              const SizedBox(height: 30),
+
+              const Opacity(
+                opacity: 1,
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+
+              const SizedBox(height: 120),
             ],
           ),
         ),
