@@ -32,13 +32,9 @@ class BookCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: SizedBox(
               height: 160,
-              child: (image.startsWith('http') || image.startsWith('https'))
-                  ? Image.network(image, fit: BoxFit.cover, errorBuilder: (c, e, s) {
-                      return const Center(child: Icon(Icons.broken_image, size: 48));
-                    })
-                  : Image.asset(image, fit: BoxFit.cover, errorBuilder: (c, e, s) {
-                      return const Center(child: Icon(Icons.broken_image, size: 48));
-                    }),
+              child: image.startsWith("http")
+                  ? Image.network(image, fit: BoxFit.cover)
+                  : Image.asset(image, fit: BoxFit.cover),
             ),
           ),
           const SizedBox(height: 10),

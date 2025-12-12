@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../widgets/sidebar.dart';
-import '../../widgets/banner_widget.dart';
-import '../../widgets/book_card.dart';
-import '../../widgets/search_bar_widget.dart';
-import '../../widgets/add_card.dart';
-import '../../dialogs/edit_book_dialog.dart';
+import '../widgets/sidebar.dart';
+import '../widgets/banner_widget.dart';
+import '../widgets/book_card.dart';
+import '../widgets/search_bar_widget.dart';
+import '../widgets/add_card.dart';
+import '../dialogs/edit_book_dialog.dart';
+
+import '../services/book_api.dart';
+import '../services/save_book_service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,8 +23,10 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           body: Row(
             children: [
+              // Sidebar só no desktop
               if (!isMobile) const Sidebar(),
 
+              // Conteúdo principal
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(20),
@@ -30,15 +35,48 @@ class HomePage extends StatelessWidget {
                     children: [
                       const SearchBarWidget(),
                       const SizedBox(height: 20),
+
                       const BannerWidget(),
                       const SizedBox(height: 25),
 
                       const Text(
                         "Your books",
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+
                       const SizedBox(height: 15),
 
+                      // BOTÃO DE IMPORTAR LIVROS DA API
+                      ElevatedButton(
+                        onPressed: () async {
+                          try {
+                            final apiBooks = await BookAPI.fetchBooks("programming");
+
+                            // salvar só 10 para não encher o Firestore
+                            for (var book in apiBooks.take(10)) {
+                              await SaveBookService.saveBook(book);
+                            }
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Livros importados da API!"),
+                              ),
+                            );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Erro: $e")),
+                            );
+                          }
+                        },
+                        child: const Text("Import Books"),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // LISTAGEM DOS LIVROS SALVOS NO FIREBASE
                       StreamBuilder<QuerySnapshot>(
                         stream: FirebaseFirestore.instance
                             .collection('books')
@@ -57,13 +95,13 @@ class HomePage extends StatelessWidget {
                           return GridView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
+                            itemCount: books.length + 1,
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: isMobile ? 1 : 3,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
                               childAspectRatio: 0.85,
                             ),
-                            itemCount: books.length + 1,
                             itemBuilder: (context, index) {
                               if (index == books.length) {
                                 return const AddCard();
@@ -101,9 +139,8 @@ class HomePage extends StatelessWidget {
             ],
           ),
 
-          bottomNavigationBar: isMobile
-              ? const Sidebar(isMobile: true)
-              : null,
+          // Sidebar vira bottom nav no mobile
+          bottomNavigationBar: isMobile ? const Sidebar(isMobile: true) : null,
         );
       },
     );
